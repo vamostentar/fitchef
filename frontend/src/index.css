@@ -1,0 +1,245 @@
+/**
+ * FitChef.pro - Estilos Globais
+ * 
+ * Arquivo principal de CSS com Tailwind e estilos customizados.
+ * Tema: "Cyber-Fitness" - Emerald + Dark Mode
+ * 
+ * @author FitChef Team
+ * @version 1.0.0
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   ESTILOS BASE
+   ============================================================ */
+
+@layer base {
+  * {
+    @apply border-dark-800;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply bg-dark-950 text-dark-50 font-sans antialiased;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  }
+
+  /* Scrollbar customizada */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-dark-900 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-dark-700 rounded-full hover:bg-dark-600 transition-colors;
+  }
+
+  /* Seleção de texto */
+  ::selection {
+    @apply bg-emerald-500/30 text-emerald-100;
+  }
+}
+
+/* ============================================================
+   COMPONENTES CUSTOMIZADOS
+   ============================================================ */
+
+@layer components {
+
+  /* Cards com Glassmorphism */
+  .glass-card {
+    @apply bg-dark-900/50 backdrop-blur-md border border-dark-800 rounded-xl;
+  }
+
+  .glass-card-hover {
+    @apply glass-card hover:bg-dark-900/70 hover:border-dark-700 transition-all duration-300 cursor-pointer;
+  }
+
+  /* Botões */
+  .btn-primary {
+    @apply bg-emerald-500 hover:bg-emerald-600 text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200 shadow-lg shadow-emerald-500/20 hover:shadow-emerald-500/30 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-dark-800 hover:bg-dark-700 text-dark-100 font-medium px-6 py-3 rounded-xl transition-all duration-200 border border-dark-700 hover:border-dark-600 active:scale-[0.98];
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-dark-800/50 text-dark-300 hover:text-dark-100 px-4 py-2 rounded-lg transition-all duration-200;
+  }
+
+  .btn-icon {
+    @apply p-2 rounded-lg bg-dark-800/50 hover:bg-dark-700/50 text-dark-400 hover:text-dark-100 transition-all duration-200;
+  }
+
+  /* Inputs */
+  .input-field {
+    @apply w-full bg-dark-900 border border-dark-800 rounded-xl px-4 py-3 text-dark-100 placeholder-dark-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500 transition-all duration-200;
+  }
+
+  .input-label {
+    @apply block text-sm font-medium text-dark-300 mb-2;
+  }
+
+  /* Select */
+  .select-field {
+    @apply input-field appearance-none cursor-pointer bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2371717a%22%20stroke-width%3D%222%22%3E%3Cpath%20d%3D%22m6%209%206%206%206-6%22%2F%3E%3C%2Fsvg%3E')] bg-[length:24px] bg-[right_12px_center] bg-no-repeat pr-12;
+  }
+
+  /* Slider/Range */
+  .slider-track {
+    @apply w-full h-2 bg-dark-800 rounded-full appearance-none cursor-pointer;
+  }
+
+  .slider-track::-webkit-slider-thumb {
+    @apply appearance-none w-5 h-5 bg-emerald-500 rounded-full cursor-pointer shadow-lg shadow-emerald-500/30 hover:bg-emerald-400 transition-all duration-200;
+  }
+
+  .slider-track::-moz-range-thumb {
+    @apply w-5 h-5 bg-emerald-500 rounded-full cursor-pointer border-0 shadow-lg shadow-emerald-500/30 hover:bg-emerald-400;
+  }
+
+  /* Tags/Badges */
+  .tag {
+    @apply inline-flex items-center gap-1 px-3 py-1 bg-dark-800 border border-dark-700 rounded-full text-sm text-dark-300;
+  }
+
+  .tag-emerald {
+    @apply tag bg-emerald-500/10 border-emerald-500/30 text-emerald-400;
+  }
+
+  /* Sidebar */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-3 rounded-xl text-dark-400 hover:bg-dark-800/50 hover:text-dark-100 transition-all duration-200;
+  }
+
+  .sidebar-link-active {
+    @apply sidebar-link bg-emerald-500/10 text-emerald-400 border border-emerald-500/20;
+  }
+
+  /* Stats Cards */
+  .stat-card {
+    @apply glass-card p-6 flex flex-col gap-2;
+  }
+
+  .stat-value {
+    @apply text-3xl font-bold text-dark-50;
+  }
+
+  .stat-label {
+    @apply text-sm text-dark-400;
+  }
+
+  /* Wizard Steps */
+  .wizard-step {
+    @apply flex items-center gap-4;
+  }
+
+  .wizard-step-circle {
+    @apply w-10 h-10 rounded-full flex items-center justify-center font-semibold text-sm transition-all duration-300;
+  }
+
+  .wizard-step-circle-active {
+    @apply wizard-step-circle bg-emerald-500 text-white shadow-glow;
+  }
+
+  .wizard-step-circle-completed {
+    @apply wizard-step-circle bg-emerald-500/20 text-emerald-400 border border-emerald-500/30;
+  }
+
+  .wizard-step-circle-pending {
+    @apply wizard-step-circle bg-dark-800 text-dark-500 border border-dark-700;
+  }
+
+  /* Dividers */
+  .divider {
+    @apply h-px bg-gradient-to-r from-transparent via-dark-700 to-transparent;
+  }
+
+  .divider-vertical {
+    @apply w-px bg-gradient-to-b from-transparent via-dark-700 to-transparent;
+  }
+}
+
+/* ============================================================
+   UTILITÁRIOS
+   ============================================================ */
+
+@layer utilities {
+
+  /* Gradientes de texto */
+  .text-gradient {
+    @apply bg-gradient-to-r from-emerald-400 to-emerald-600 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent;
+  }
+
+  /* Efeito de brilho */
+  .glow {
+    @apply shadow-glow;
+  }
+
+  .glow-lg {
+    @apply shadow-glow-lg;
+  }
+
+  /* Grid patterns */
+  .pattern-grid {
+    background-image:
+      linear-gradient(to right, rgba(16, 185, 129, 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(16, 185, 129, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Animações de entrada */
+  .animate-in {
+    @apply animate-fade-in;
+  }
+
+  .animate-up {
+    @apply animate-slide-up;
+  }
+}
+
+/* ============================================================
+   ANIMAÇÕES ADICIONAIS
+   ============================================================ */
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(16, 185, 129, 0.1) 50%,
+      transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Loading spinner */
+.spinner {
+  @apply w-5 h-5 border-2 border-dark-700 border-t-emerald-500 rounded-full animate-spin;
+}
+
+.spinner-lg {
+  @apply w-8 h-8 border-[3px] border-dark-700 border-t-emerald-500 rounded-full animate-spin;
+}
