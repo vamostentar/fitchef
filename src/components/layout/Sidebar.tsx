@@ -1,11 +1,11 @@
 /**
- * FitChef.pro - Sidebar
+ * FitChef.pro - Sidebar Responsiva
  * 
- * Componente de navegação lateral com menu e branding.
+ * Componente de navegação lateral com suporte mobile.
  * Design: Cyber-Fitness com ícones Lucide.
  * 
  * @author FitChef Team
- * @version 1.0.0
+ * @version 2.0.0
  */
 
 import {
@@ -20,6 +20,7 @@ import {
 interface SidebarProps {
     currentPage: string;
     onNavigate: (page: string) => void;
+    isOpen?: boolean;
 }
 
 interface NavItem {
@@ -35,9 +36,16 @@ const navItems: NavItem[] = [
     { id: 'settings', label: 'Configurações', icon: <Settings size={20} /> },
 ];
 
-export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
+export default function Sidebar({ currentPage, onNavigate, isOpen = false }: SidebarProps) {
     return (
-        <aside className="fixed left-0 top-0 h-screen w-64 bg-dark-900/80 backdrop-blur-xl border-r border-dark-800 flex flex-col z-50">
+        <aside className={`
+            fixed left-0 top-0 h-screen w-64 
+            bg-dark-900/95 backdrop-blur-xl border-r border-dark-800 
+            flex flex-col z-50
+            transform transition-transform duration-300 ease-in-out
+            ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+            lg:translate-x-0
+        `}>
             {/* Logo */}
             <div className="p-6 border-b border-dark-800">
                 <div className="flex items-center gap-3">
@@ -71,8 +79,8 @@ export default function Sidebar({ currentPage, onNavigate }: SidebarProps) {
                 ))}
             </nav>
 
-            {/* Seção Pro/Upgrade */}
-            <div className="p-4 border-t border-dark-800">
+            {/* Seção Pro/Upgrade - Escondida em mobile */}
+            <div className="p-4 border-t border-dark-800 hidden md:block">
                 <div className="glass-card p-4 bg-gradient-to-br from-emerald-500/10 to-emerald-600/5">
                     <div className="flex items-center gap-2 mb-2">
                         <Sparkles size={16} className="text-emerald-400" />
